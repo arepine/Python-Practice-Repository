@@ -17,4 +17,10 @@ def is_win(player, opponent):
         or (player == 'p' and opponent == 'r'):
         return True
 
-print(play())
+def playAgain():
+    return input('Do you want to play again? (Yes or No): ').lower().startswith('y')
+
+while True:
+    print(play())
+    if not playAgain():
+        break
