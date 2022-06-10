@@ -1,11 +1,13 @@
+from math import *
 import random
+import time
 # Author: @Austin Repine
 # This program asks the user how many problems the user would like to do.
 # Once it has the amount of problems, it then-
 # -creates two random integers.
 # It asks the user to solve the various math problems from Addition to Division.
 # Future math equations/functionality are in the works.
-
+start_time = time.time()
 class MathFunctions():
     def __init__(self) -> None:
         pass
@@ -39,6 +41,11 @@ def multiply_function(num1, num2):
 def divide_function(num1, num2):
     return round(num1 / num2, 2)
 
+# This function takes the two random integers
+# adds them together, and multiplies them both by pi.
+def pi_function(added_number):
+    return (added_number)*pi
+
 # This function takes two random integers,
 # and tells which one is greater than the other one and by how much.
 def is_greater(num1, num2):
@@ -67,38 +74,46 @@ while i < problems:
     lst = list(map(lambda num: num**2, myNums))
     is_greater(num1, num2)
 
-    print("What are the two variables ", num1, ", ", num2, " added together? ", num1, " + ", num2, "= ")
+    print(f'What are the two variables {num1}, {num2} added together? {num1}+{num2}= ')
     userAnswer = int(input())
     a_answer = add_function(num1, num2)
     if userAnswer == a_answer:
         print("You are correct!")
     elif userAnswer != a_answer:
-        print("Sorry, your answer is incorrect. The correct answer is: ", a_answer)
+        print(f'Sorry that was wrong. {a_answer} was the correct answer.')
 
-    print("What are the two variables ", num1, ", ", num2, " subtracted from each other? ", num1, " - ", num2, "= ")
+    print(f'What are the two variables {num1}, {num2} subtracted? {num1}-{num2}= ')
     userAnswer = int(input())
     s_answer = sub_function(num1, num2)
     if userAnswer == s_answer:
         print("You are correct!")
     else:
-        print("Sorry, your answer is incorrect. The correct answer is: ", s_answer)
+        print(f'Sorry that was wrong. {s_answer} was the correct answer.')
 
-    print("What are the two variables ", num1, ", ", num2, " multiplied together? ", num1, " * ", num2, "= ")
+    print(f'What are the two variables {num1}, {num2} multiplied together? {num1}*{num2}= ')
     userAnswer = int(input())
     m_answer = multiply_function(num1, num2)
     if userAnswer == m_answer:
         print("You are correct!")
     elif userAnswer != m_answer:
-        print("Sorry, your answer is incorrect. The correct answer is: ", m_answer)
+        print(f'Sorry that was wrong. {m_answer} was the correct answer.')
 
-    print("What are the two variables ", num1, ", ", num2, " divided by each other? (Round to the one hundredth place) ", num1, " / ", num2, "= ")
+    print(f'What are the two variables {num1}, {num2} divided by each other? (Round to the hundredths place) {num1}/{num2}=')
     userAnswer = float(input())
-    d_Answer =  divide_function(num1, num2)
-    if userAnswer == d_Answer:
+    d_answer =  divide_function(num1, num2)
+    if userAnswer == d_answer:
         print("You are correct!")
-    elif userAnswer != d_Answer:
-        print("Sorry, your answer is incorrect. The correct answer is: ", d_Answer)
+    elif userAnswer != d_answer:
+        print(f'Sorry that was wrong. {d_answer} was the correct answer.')
 
-    
+    print(f'Bonus question!!!!\nThe two numbers have been added to create: {a_answer}. What is {a_answer} multiplied by pi (3.14): ')
+    userAnswer = float(input())
+    pi_answer = pi_function(a_answer)
+    if userAnswer == pi_answer:
+        print("You are fantastically correct!")
+    else:
+        print(f"Wrong, the correct answer was: {pi_answer}...\nGo learn bro...")
+
     i += 1
-
+end_time = time.time() - start_time
+print(end_time)
