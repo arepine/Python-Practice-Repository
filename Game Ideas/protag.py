@@ -2,6 +2,10 @@ import random
 
 class Character:
     def __init__(self) -> None:
+        int base_health:
+        self.base_magic = base_magic
+        self.health_Stats = health_Stats
+        self.magic_Stats = magic_Stats
         pass
 
     def character_role(self, role=''):
@@ -19,23 +23,56 @@ class Character:
     def __str__(self) -> str:
         return f"Your character is a {self.race} {self.role}"
     
-    def getBaseStats(self, base_health=0, base_magic=0):
-        if self.race == 'Human':
-            base_health = 10
-            base_magic = 10
-        elif self.race == 'Caporian':
-            base_health = 7
-            base_magic = 13
-        elif self.race == 'Tecalan':
-            base_health = 15
-            base_magic = 5
-        elif self.race == 'Falixi':
-            base_health = 11
-            base_magic = 9
+    def getBaseRacialStats(self, race):
+        health_dict = {'Human':10, 'Caporian':7, 'Tecalan':15, 'Falixi':11, 'Karnian':13}
+        magic_dict = {'Human':10, 'Caporian':13, 'Tecalan':5, 'Falixi':9, 'Karnian':7}
+        base_health = 0
+        base_magic = 0
+        
+        if race == 'Human':
+            base_health = health_dict['Human']
+            base_magic = magic_dict['Human']
+        elif race == 'Caporian':
+            base_health = health_dict['Caporian']
+            base_magic = magic_dict['Caporian']
+        elif race == 'Tecalan':
+            base_health = health_dict['Tecalan']
+            base_magic = magic_dict['Tecalan']
+        elif race == 'Falixi':
+            base_health = health_dict['Falixi']
+            base_magic = magic_dict['Falixi']
+        elif race == 'Karnian':
+            base_health = health_dict['Karnian']
+            base_magic = magic_dict['Karnian']
         else:
-            base_health = 13
-            base_magic = 7
+            pass
+
         return base_health, base_magic
+
+    def getBaseRoleStats(self, role):
+        role_health = {'Fighter':20, 'Archer':14, 'Wizard':9, 'Jokester':10, 'Valkyrie':18}
+        role_magic = {'Fighter':0, 'Archer':6, 'Wizard':11, 'Jokester':10, 'Valkyrie':2}
+
+        health_Stats = 0
+        magic_Stats = 0
+        if role == 'Fighter':
+            health_Stats = role_health['Fighter']
+            magic_Stats = role_magic['Fighter']
+        elif role == 'Archer':
+            health_Stats = role_health['Archer']
+            magic_Stats = role_magic['Archer']
+        elif role == 'Wizard':
+            health_Stats = role_health['Wizard']
+            magic_Stats = role_magic['Wizard']
+        elif role == 'Jokester':
+            health_Stats = role_health['Jokester']
+            magic_Stats = role_magic['Jokester']
+        elif role == 'Valkrie':
+            health_Stats = role_health['Valkyrie']
+            magic_Stats = role_magic['Valkyrie']
+        else:
+            pass
+        return health_Stats, magic_Stats
 
 
 
@@ -44,7 +81,9 @@ print("Creating a character for you:\n")
 player_character = Character()
 player_race = player_character.character_race()
 player_role = player_character.character_role()
-player_baseStats = player_character.getBaseStats()
+player_baseRacialStats = player_character.getBaseRacialStats(player_race)
+player_baseRoleStats = player_character.getBaseRoleStats(player_role)
+player_health, player_magic = ('')
 
 if player_race == 'Tecalan' and player_role == 'Wizard':
     player_role = 'Shaman'
@@ -57,5 +96,5 @@ else:
 
 
 
-print(f"Your character is a...{player_race} {player_role}\nYour base stats are: {player_baseStats}")
+print(f"Your character is a...{player_race} {player_role}\nYour base stats are: {player_baseRacialStats}.\nYour role stats are: {player_baseRoleStats}")
 
