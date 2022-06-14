@@ -2,10 +2,10 @@ import random
 
 class Character:
     def __init__(self) -> None:
-        int base_health:
-        self.base_magic = base_magic
-        self.health_Stats = health_Stats
-        self.magic_Stats = magic_Stats
+        # self.base_health = base_health
+        # self.base_magic = base_magic
+        # self.health_Stats = health_Stats
+        # self.magic_Stats = magic_Stats
         pass
 
     def character_role(self, role=''):
@@ -83,7 +83,7 @@ player_race = player_character.character_race()
 player_role = player_character.character_role()
 player_baseRacialStats = player_character.getBaseRacialStats(player_race)
 player_baseRoleStats = player_character.getBaseRoleStats(player_role)
-player_health, player_magic = ('')
+# player_health, player_magic = ('')
 
 if player_race == 'Tecalan' and player_role == 'Wizard':
     player_role = 'Shaman'
